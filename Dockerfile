@@ -15,12 +15,8 @@ RUN useradd -m -d /home/sshuser -s /bin/bash sshuser && \
 # Kopiere eine angepasste SSH-Konfiguration
 COPY sshd_config /etc/ssh/sshd_config
 
-# Setze den Port über Umgebungsvariable
-ARG SSH_PORT=22
-RUN sed -i "s/^Port .*/Port ${SSH_PORT}/" /etc/ssh/sshd_config
-
 # Exponiere den Port aus der Umgebungsvariable
-EXPOSE ${SSH_PORT}
+EXPOSE 22
 
 # Starte den SSH-Server
 CMD ["/bin/bash", "-c", "/usr/sbin/sshd -D"]
