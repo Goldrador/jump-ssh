@@ -1,5 +1,5 @@
 # Grundlegende SSH-Server-Einstellungen
-Port 22  # Der Port wird dynamisch durch das Dockerfile überschrieben
+Port 22
 PermitRootLogin no
 PasswordAuthentication no
 PubkeyAuthentication yes
