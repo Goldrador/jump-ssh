@@ -1,0 +1,16 @@
+name: Docker build and publish image
+
+on:
+  [workflow_dispatch]
+
+jobs:
+  publish_images:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: build image
+        run: docker build . --file Dockerfile --tag goldrador/jump-ssh:latest
+      - name: push image
+        run: |
+          docker login -u goldrador -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push goldrador/jump-ssh:latest
