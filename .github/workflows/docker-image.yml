@@ -12,5 +12,5 @@ jobs:
         run: docker build . --file Dockerfile --tag goldrador/jump-ssh:latest
       - name: push image
         run: |
-          docker login -u goldrador --password-stdin ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker login -u goldrador -p ${{ secrets.DOCKER_HUB_TOKEN }}
           docker push goldrador/jump-ssh:latest
